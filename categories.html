@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Categories and Tags | Refmansy Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="categories.css">
+</head>
+
+<body>
+
+    <div class="page-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="admin-profile">
+
+                <div class="profile-logo">
+                    <span>RR</span>
+                </div>
+
+                <div class="profile-information">
+                    <h1>REFMANSY Admin</h1>
+                    <p>Management Panel</p>
+                </div>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="admin-dashboard.html">
+                    <i class="fa-solid fa-table-cells-large"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="research-files.html">
+                    <i class="fa-regular fa-folder"></i>
+                    <span>Research Files</span>
+                </a>
+
+                <a href="pending-files.html">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>Pending Files</span>
+                </a>
+
+                <a href="approved-files.html">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <span>Approved Files</span>
+                </a>
+
+                <a href="rejected-files.html">
+                    <i class="fa-solid fa-xmark"></i>
+                    <span>Rejected Files</span>
+                </a>
+
+                <a href="categories.html" class="active">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>Categories / Tags</span>
+                </a>
+
+                <a href="manage-users.html">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Users</span>
+                </a>
+
+                <a href="feedback.html">
+                    <i class="fa-regular fa-comment-dots"></i>
+                    <span>Feedback</span>
+                </a>
+
+                <a href="admin-reports.html">
+                    <i class="fa-regular fa-file-lines"></i>
+                    <span>Reports</span>
+                </a>
+
+            </nav>
+
+            <button type="button" id="logoutButton" class="logout-button">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="page-header">
+
+                <div>
+                    <h2>Categories / Tags</h2>
+                    <p>
+                        Organize research files using categories and tags.
+                    </p>
+                </div>
+
+                <div class="header-actions">
+
+                    <button
+                        type="button"
+                        id="addCategoryButton"
+                        class="add-category-button"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                        Add Category
+                    </button>
+
+                    <div class="header-user">
+
+                        <div>
+                            <strong id="headerAdminName">
+                                Administrator
+                            </strong>
+
+                            <span>Admin</span>
+                        </div>
+
+                        <div class="small-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- Summary Cards -->
+            <section class="summary-grid">
+
+                <article class="summary-card">
+
+                    <div class="summary-icon category-icon">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="totalCategories">0</h3>
+                        <p>Total Categories</p>
+                    </div>
+
+                </article>
+
+                <article class="summary-card">
+
+                    <div class="summary-icon tag-icon">
+                        <i class="fa-solid fa-tags"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="totalTags">0</h3>
+                        <p>Total Tags</p>
+                    </div>
+
+                </article>
+
+                <article class="summary-card">
+
+                    <div class="summary-icon file-icon">
+                        <i class="fa-regular fa-folder-open"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="categorizedFiles">0</h3>
+                        <p>Categorized Files</p>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <section class="content-grid">
+
+                <!-- Categories -->
+                <article class="management-card">
+
+                    <div class="card-heading">
+
+                        <div>
+                            <h3>Research Categories</h3>
+                            <p>Manage the categories used by research files.</p>
+                        </div>
+
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <input
+                                type="search"
+                                id="categorySearch"
+                                placeholder="Search categories..."
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Category Name</th>
+                                    <th>Description</th>
+                                    <th>Files</th>
+                                    <th>Date Created</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="categoriesTable">
+
+                                <tr>
+                                    <td colspan="5" class="empty-message">
+                                        No categories have been created.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="table-footer">
+                        <p id="categoryCount">
+                            Showing 0 categories
+                        </p>
+                    </div>
+
+                </article>
+
+                <!-- Tags -->
+                <article class="tags-card">
+
+                    <div class="card-heading">
+                        <div>
+                            <h3>Research Tags</h3>
+                            <p>Create tags for easier research searching.</p>
+                        </div>
+                    </div>
+
+                    <form id="tagForm" class="tag-form">
+
+                        <input
+                            type="text"
+                            id="tagName"
+                            placeholder="Enter a new tag"
+                            maxlength="30"
+                            required
+                        >
+
+                        <button type="submit">
+                            <i class="fa-solid fa-plus"></i>
+                            Add
+                        </button>
+
+                    </form>
+
+                    <p id="tagMessage" class="form-message"></p>
+
+                    <div id="tagsContainer" class="tags-container">
+
+                        <p class="empty-tags">
+                            No tags have been created.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Add/Edit Category Modal -->
+    <div class="modal-overlay" id="categoryModal">
+
+        <section class="category-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h3 id="modalTitle">Add Category</h3>
+                    <p>Enter the category information below.</p>
+                </div>
+
+                <button type="button" id="closeModalButton">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <form id="categoryForm">
+
+                <input type="hidden" id="categoryId">
+
+                <div class="input-group">
+                    <label for="categoryName">
+                        Category Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="categoryName"
+                        placeholder="Enter category name"
+                        maxlength="50"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="categoryDescription">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="categoryDescription"
+                        placeholder="Enter category description"
+                        maxlength="200"
+                    ></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="categoryColor">
+                        Category Color
+                    </label>
+
+                    <input
+                        type="color"
+                        id="categoryColor"
+                        value="#73aee7"
+                    >
+                </div>
+
+                <p id="categoryMessage" class="form-message"></p>
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        id="cancelButton"
+                        class="cancel-button"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                    >
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        Save Category
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </div>
+
+    <script src="categories.js"></script>
+
+</body>
+</html>

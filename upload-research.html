@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Upload Research | Refmansy Faculty</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="upload-research.css">
+</head>
+
+<body>
+
+    <div class="page-layout">
+
+        <!-- Faculty Sidebar -->
+        <aside class="sidebar">
+
+            <div class="faculty-profile">
+
+                <div class="profile-logo">
+                    <span>RF</span>
+                </div>
+
+                <div class="profile-information">
+                    <h1>REFMANSY Faculty</h1>
+                    <p>User Dashboard</p>
+                </div>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="faculty-dashboard.html">
+                    <i class="fa-solid fa-table-cells-large"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="my-research-files.html">
+                    <i class="fa-regular fa-folder"></i>
+                    <span>My Research Files</span>
+                </a>
+
+                <a href="upload-research.html" class="active">
+                    <i class="fa-solid fa-upload"></i>
+                    <span>Upload Research</span>
+                </a>
+
+                <a href="search-files.html">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search Files</span>
+                </a>
+
+                <a href="submission-status.html">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Submission Status</span>
+                </a>
+
+                <a href="faculty-categories.html">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>Categories / Tags</span>
+                </a>
+
+                <a href="download-records.html">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Download Records</span>
+                </a>
+
+                <a href="faculty-feedback.html">
+                    <i class="fa-regular fa-comment-dots"></i>
+                    <span>Feedback</span>
+                </a>
+
+            </nav>
+
+            <button type="button" id="logoutButton" class="logout-button">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="page-header">
+
+                <div>
+                    <h2 id="pageTitle">Upload Research</h2>
+
+                    <p id="pageDescription">
+                        Submit a research document for administrator review.
+                    </p>
+                </div>
+
+                <div class="header-user">
+
+                    <div>
+                        <strong id="headerFacultyName">
+                            Faculty User
+                        </strong>
+                        <span>Faculty</span>
+                    </div>
+
+                    <div class="small-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- Upload Guidelines -->
+            <section class="guidelines-card">
+
+                <div class="guidelines-icon">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+
+                <div>
+                    <h3>Submission Guidelines</h3>
+
+                    <ul>
+                        <li>Upload research documents in PDF format only.</li>
+                        <li>The maximum supported file size is 2 MB.</li>
+                        <li>Complete all required research information.</li>
+                        <li>
+                            New and edited submissions will have a
+                            Pending status.
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <!-- Upload Form -->
+            <section class="upload-card">
+
+                <div class="card-heading">
+                    <h3>Research Information</h3>
+                    <p>
+                        Fields marked with an asterisk (*) are required.
+                    </p>
+                </div>
+
+                <form id="researchForm">
+
+                    <input type="hidden" id="researchId">
+
+                    <div class="form-grid">
+
+                        <div class="input-group full-width">
+                            <label for="researchTitle">
+                                Research Title *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="researchTitle"
+                                placeholder="Enter the complete research title"
+                                maxlength="200"
+                                required
+                            >
+                        </div>
+
+                        <div class="input-group">
+                            <label for="researcher">
+                                Researcher / Author *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="researcher"
+                                placeholder="Enter researcher name"
+                                required
+                            >
+                        </div>
+
+                        <div class="input-group">
+                            <label for="coResearchers">
+                                Co-Researchers
+                            </label>
+
+                            <input
+                                type="text"
+                                id="coResearchers"
+                                placeholder="Separate names with commas"
+                            >
+                        </div>
+
+                        <div class="input-group">
+                            <label for="category">
+                                Research Category *
+                            </label>
+
+                            <select id="category" required>
+                                <option value="">
+                                    Select a category
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="publicationYear">
+                                Year *
+                            </label>
+
+                            <input
+                                type="number"
+                                id="publicationYear"
+                                placeholder="Example: 2026"
+                                min="1900"
+                                max="2100"
+                                required
+                            >
+                        </div>
+
+                        <div class="input-group">
+                            <label for="department">
+                                Department *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="department"
+                                placeholder="Enter department"
+                                required
+                            >
+                        </div>
+
+                        <div class="input-group">
+                            <label for="researchType">
+                                Research Type *
+                            </label>
+
+                            <select id="researchType" required>
+                                <option value="">
+                                    Select research type
+                                </option>
+
+                                <option value="institutional">
+                                    Institutional Research
+                                </option>
+
+                                <option value="action-research">
+                                    Action Research
+                                </option>
+
+                                <option value="thesis">
+                                    Thesis
+                                </option>
+
+                                <option value="capstone">
+                                    Capstone Project
+                                </option>
+
+                                <option value="other">
+                                    Other
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label for="description">
+                                Abstract / Description *
+                            </label>
+
+                            <textarea
+                                id="description"
+                                placeholder="Enter the research abstract or description"
+                                maxlength="1500"
+                                required
+                            ></textarea>
+
+                            <small>
+                                Maximum of 1,500 characters
+                            </small>
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label for="keywords">
+                                Keywords / Tags
+                            </label>
+
+                            <input
+                                type="text"
+                                id="keywords"
+                                placeholder="Example: education, technology, learning"
+                            >
+                        </div>
+
+                        <!-- File Upload -->
+                        <div class="input-group full-width">
+
+                            <label>
+                                Research Document *
+                            </label>
+
+                            <div
+                                class="file-upload-area"
+                                id="fileUploadArea"
+                            >
+
+                                <input
+                                    type="file"
+                                    id="researchFile"
+                                    accept=".pdf,application/pdf"
+                                >
+
+                                <div
+                                    id="uploadPlaceholder"
+                                    class="upload-placeholder"
+                                >
+                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                                    <h4>
+                                        Select or drag your PDF file here
+                                    </h4>
+
+                                    <p>
+                                        PDF format only, maximum of 2 MB
+                                    </p>
+
+                                    <button
+                                        type="button"
+                                        id="chooseFileButton"
+                                    >
+                                        Choose File
+                                    </button>
+                                </div>
+
+                                <div
+                                    id="selectedFile"
+                                    class="selected-file"
+                                >
+                                    <div class="file-icon">
+                                        <i class="fa-solid fa-file-pdf"></i>
+                                    </div>
+
+                                    <div class="file-details">
+                                        <strong id="selectedFileName">
+                                            document.pdf
+                                        </strong>
+
+                                        <span id="selectedFileSize">
+                                            0 KB
+                                        </span>
+                                    </div>
+
+                                    <button
+                                        type="button"
+                                        id="removeFileButton"
+                                        title="Remove file"
+                                    >
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <p id="existingFileMessage" class="existing-file">
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <p id="formMessage" class="form-message"></p>
+
+                    <div class="form-actions">
+
+                        <a
+                            href="my-research-files.html"
+                            class="cancel-button"
+                        >
+                            Cancel
+                        </a>
+
+                        <button
+                            type="submit"
+                            id="submitButton"
+                            class="submit-button"
+                        >
+                            <i class="fa-solid fa-upload"></i>
+                            Submit Research
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="upload-research.js"></script>
+
+</body>
+</html>

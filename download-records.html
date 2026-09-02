@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Download Records | Refmansy Faculty</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="download-records.css">
+</head>
+
+<body>
+
+    <div class="page-layout">
+
+        <!-- Faculty Sidebar -->
+        <aside class="sidebar">
+
+            <div class="faculty-profile">
+
+                <div class="profile-logo">
+                    <span>RF</span>
+                </div>
+
+                <div class="profile-information">
+                    <h1>REFMANSY Faculty</h1>
+                    <p>User Dashboard</p>
+                </div>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="faculty-dashboard.html">
+                    <i class="fa-solid fa-table-cells-large"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="my-research-files.html">
+                    <i class="fa-regular fa-folder"></i>
+                    <span>My Research Files</span>
+                </a>
+
+                <a href="upload-research.html">
+                    <i class="fa-solid fa-upload"></i>
+                    <span>Upload Research</span>
+                </a>
+
+                <a href="search-files.html">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search Files</span>
+                </a>
+
+                <a href="submission-status.html">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Submission Status</span>
+                </a>
+
+                <a href="faculty-categories.html">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>Categories / Tags</span>
+                </a>
+
+                <a href="download-records.html" class="active">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Download Records</span>
+                </a>
+
+                <a href="faculty-feedback.html">
+                    <i class="fa-regular fa-comment-dots"></i>
+                    <span>Feedback</span>
+                </a>
+
+            </nav>
+
+            <button type="button" id="logoutButton" class="logout-button">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="page-header">
+
+                <div>
+                    <h2>Download Records</h2>
+
+                    <p>
+                        Download approved research documents and view
+                        your download history.
+                    </p>
+                </div>
+
+                <div class="header-user">
+
+                    <div>
+                        <strong id="headerFacultyName">
+                            Faculty User
+                        </strong>
+                        <span>Faculty</span>
+                    </div>
+
+                    <div class="small-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- Summary -->
+            <section class="summary-grid">
+
+                <article class="summary-card">
+
+                    <div class="summary-icon available-icon">
+                        <i class="fa-regular fa-folder-open"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="availableFiles">0</h3>
+                        <p>Available Files</p>
+                    </div>
+
+                </article>
+
+                <article class="summary-card">
+
+                    <div class="summary-icon download-icon">
+                        <i class="fa-solid fa-download"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="totalDownloads">0</h3>
+                        <p>My Downloads</p>
+                    </div>
+
+                </article>
+
+                <article class="summary-card">
+
+                    <div class="summary-icon recent-icon">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="recentDownloads">0</h3>
+                        <p>Downloads Today</p>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- Downloadable Files -->
+            <section class="records-card">
+
+                <div class="card-heading">
+
+                    <div>
+                        <h3>Approved Research Documents</h3>
+                        <p>
+                            Search and download approved PDF documents.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="table-controls">
+
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Search title or researcher..."
+                        >
+                    </div>
+
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                    </select>
+
+                    <select id="yearFilter">
+                        <option value="all">All Years</option>
+                    </select>
+
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Research Title</th>
+                                <th>Researcher</th>
+                                <th>Category</th>
+                                <th>Year</th>
+                                <th>File Name</th>
+                                <th>File Size</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="downloadFilesTable">
+
+                            <tr>
+                                <td colspan="7" class="empty-message">
+                                    No approved documents are available.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="table-footer">
+                    <p id="resultCount">
+                        Showing 0 downloadable files
+                    </p>
+                </div>
+
+            </section>
+
+            <!-- Download History -->
+            <section class="history-card">
+
+                <div class="card-heading history-heading">
+
+                    <div>
+                        <h3>My Download History</h3>
+                        <p>Research files you recently downloaded.</p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="clearHistoryButton"
+                        class="clear-history-button"
+                    >
+                        <i class="fa-solid fa-trash"></i>
+                        Clear History
+                    </button>
+
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Research Title</th>
+                                <th>Researcher</th>
+                                <th>File Name</th>
+                                <th>Date Downloaded</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="downloadHistoryTable">
+
+                            <tr>
+                                <td colspan="4" class="empty-message">
+                                    You have no download history.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="download-records.js"></script>
+
+</body>
+</html>

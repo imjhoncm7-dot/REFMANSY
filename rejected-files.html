@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rejected Files | Refmansy Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="rejected-files.css">
+</head>
+
+<body>
+
+    <div class="page-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="admin-profile">
+
+                <div class="profile-logo">
+                    <span>RR</span>
+                </div>
+
+                <div class="profile-information">
+                    <h1>REFMANSY Admin</h1>
+                    <p>Management Panel</p>
+                </div>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="admin-dashboard.html">
+                    <i class="fa-solid fa-table-cells-large"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="research-files.html">
+                    <i class="fa-regular fa-folder"></i>
+                    <span>Research Files</span>
+                </a>
+
+                <a href="pending-files.html">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>Pending Files</span>
+                </a>
+
+                <a href="approved-files.html">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <span>Approved Files</span>
+                </a>
+
+                <a href="rejected-files.html" class="active">
+                    <i class="fa-solid fa-xmark"></i>
+                    <span>Rejected Files</span>
+                </a>
+
+                <a href="categories.html">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>Categories / Tags</span>
+                </a>
+
+                <a href="manage-users.html">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Users</span>
+                </a>
+
+                <a href="feedback.html">
+                    <i class="fa-regular fa-comment-dots"></i>
+                    <span>Feedback</span>
+                </a>
+
+                <a href="admin-reports.html">
+                    <i class="fa-regular fa-file-lines"></i>
+                    <span>Reports</span>
+                </a>
+
+            </nav>
+
+            <button type="button" id="logoutButton" class="logout-button">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="page-header">
+
+                <div>
+                    <h2>Rejected Files</h2>
+                    <p>View and reconsider rejected research files.</p>
+                </div>
+
+                <div class="header-user">
+
+                    <div>
+                        <strong id="headerAdminName">Administrator</strong>
+                        <span>Admin</span>
+                    </div>
+
+                    <div class="small-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- Rejected Summary -->
+            <section class="rejected-summary">
+
+                <div class="summary-icon">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+
+                <div>
+                    <h3 id="totalRejectedFiles">0</h3>
+                    <p>Rejected research files</p>
+                </div>
+
+            </section>
+
+            <!-- Rejected Files -->
+            <section class="files-card">
+
+                <div class="card-heading">
+
+                    <div>
+                        <h3>Rejected Research Files</h3>
+                        <p>
+                            Search and review rejected research submissions.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Search and Filter -->
+                <div class="table-controls">
+
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Search title or researcher..."
+                        >
+                    </div>
+
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                    </select>
+
+                </div>
+
+                <!-- Table -->
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Research ID</th>
+                                <th>Research Title</th>
+                                <th>Researcher</th>
+                                <th>Category</th>
+                                <th>Date Rejected</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="rejectedFilesTable">
+
+                            <tr>
+                                <td colspan="7" class="empty-message">
+                                    No rejected research files found.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="table-footer">
+                    <p id="resultCount">Showing 0 rejected files</p>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Rejected File Details Modal -->
+    <div class="modal-overlay" id="detailsModal">
+
+        <section class="details-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h3>Rejected File Details</h3>
+                    <p>Review the rejected research information.</p>
+                </div>
+
+                <button type="button" id="closeModalButton">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <div class="file-information">
+
+                <div class="information-group">
+                    <label>Research ID</label>
+                    <p id="modalFileId">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Date Rejected</label>
+                    <p id="modalRejectedDate">N/A</p>
+                </div>
+
+                <div class="information-group full-width">
+                    <label>Research Title</label>
+                    <p id="modalTitle">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Researcher</label>
+                    <p id="modalResearcher">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Category</label>
+                    <p id="modalCategory">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Reviewed By</label>
+                    <p id="modalReviewedBy">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Status</label>
+                    <p class="rejected-text">Rejected</p>
+                </div>
+
+                <div class="information-group full-width">
+                    <label>Description</label>
+                    <p id="modalDescription">
+                        No description available.
+                    </p>
+                </div>
+
+                <div class="information-group full-width">
+                    <label>Reason for Rejection</label>
+                    <p id="modalComment">
+                        No rejection reason available.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="markPendingButton"
+                    class="pending-button"
+                >
+                    <i class="fa-regular fa-clock"></i>
+                    Return to Pending
+                </button>
+
+                <button
+                    type="button"
+                    id="approveButton"
+                    class="approve-button"
+                >
+                    <i class="fa-solid fa-check"></i>
+                    Approve
+                </button>
+
+                <button
+                    type="button"
+                    id="viewFileButton"
+                    class="view-file-button"
+                >
+                    <i class="fa-regular fa-file"></i>
+                    View File
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="rejected-files.js"></script>
+
+</body>
+</html>

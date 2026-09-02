@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Users | Refmansy Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="manage-users.css">
+</head>
+
+<body>
+
+    <div class="page-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="admin-profile">
+
+                <div class="profile-logo">
+                    <span>RR</span>
+                </div>
+
+                <div class="profile-information">
+                    <h1>REFMANSY Admin</h1>
+                    <p>Management Panel</p>
+                </div>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="admin-dashboard.html">
+                    <i class="fa-solid fa-table-cells-large"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="research-files.html">
+                    <i class="fa-regular fa-folder"></i>
+                    <span>Research Files</span>
+                </a>
+
+                <a href="pending-files.html">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>Pending Files</span>
+                </a>
+
+                <a href="approved-files.html">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <span>Approved Files</span>
+                </a>
+
+                <a href="rejected-files.html">
+                    <i class="fa-solid fa-xmark"></i>
+                    <span>Rejected Files</span>
+                </a>
+
+                <a href="categories.html">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>Categories / Tags</span>
+                </a>
+
+                <a href="manage-users.html" class="active">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Users</span>
+                </a>
+
+                <a href="feedback.html">
+                    <i class="fa-regular fa-comment-dots"></i>
+                    <span>Feedback</span>
+                </a>
+
+                <a href="admin-reports.html">
+                    <i class="fa-regular fa-file-lines"></i>
+                    <span>Reports</span>
+                </a>
+
+            </nav>
+
+            <button type="button" id="logoutButton" class="logout-button">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="page-header">
+
+                <div>
+                    <h2>Manage Users</h2>
+                    <p>View and manage Refmansy user accounts.</p>
+                </div>
+
+                <div class="header-actions">
+
+                    <button
+                        type="button"
+                        id="addUserButton"
+                        class="add-user-button"
+                    >
+                        <i class="fa-solid fa-user-plus"></i>
+                        Add User
+                    </button>
+
+                    <div class="header-user">
+
+                        <div>
+                            <strong id="headerAdminName">
+                                Administrator
+                            </strong>
+                            <span>Admin</span>
+                        </div>
+
+                        <div class="small-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- Summary Cards -->
+            <section class="summary-grid">
+
+                <article class="summary-card">
+
+                    <div class="summary-icon users-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="totalUsers">0</h3>
+                        <p>Total Accounts</p>
+                    </div>
+
+                </article>
+
+                <article class="summary-card">
+
+                    <div class="summary-icon admin-icon">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="totalAdmins">0</h3>
+                        <p>Administrators</p>
+                    </div>
+
+                </article>
+
+                <article class="summary-card">
+
+                    <div class="summary-icon regular-user-icon">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="totalRegularUsers">0</h3>
+                        <p>Regular Users</p>
+                    </div>
+
+                </article>
+
+                <article class="summary-card">
+
+                    <div class="summary-icon active-icon">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="activeUsers">0</h3>
+                        <p>Active Accounts</p>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- Users Table -->
+            <section class="users-card">
+
+                <div class="card-heading">
+
+                    <div>
+                        <h3>User Accounts</h3>
+                        <p>
+                            Search, edit, activate, or deactivate accounts.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="table-controls">
+
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Search name, username, or email..."
+                        >
+                    </div>
+
+                    <select id="roleFilter">
+                        <option value="all">All Roles</option>
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                    </select>
+
+                    <select id="statusFilter">
+                        <option value="all">All Statuses</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Username</th>
+                                <th>Email Address</th>
+                                <th>Role</th>
+                                <th>Date Created</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="usersTable">
+
+                            <tr>
+                                <td colspan="7" class="empty-message">
+                                    No user accounts found.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="table-footer">
+                    <p id="resultCount">Showing 0 users</p>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Add/Edit User Modal -->
+    <div class="modal-overlay" id="userModal">
+
+        <section class="user-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h3 id="modalTitle">Add User</h3>
+                    <p>Enter the account information below.</p>
+                </div>
+
+                <button type="button" id="closeModalButton">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <form id="userForm">
+
+                <input type="hidden" id="userId">
+
+                <div class="form-grid">
+
+                    <div class="input-group full-width">
+                        <label for="fullname">Full Name</label>
+
+                        <input
+                            type="text"
+                            id="fullname"
+                            placeholder="Enter full name"
+                            required
+                        >
+                    </div>
+
+                    <div class="input-group">
+                        <label for="username">Username</label>
+
+                        <input
+                            type="text"
+                            id="username"
+                            placeholder="Enter username"
+                            required
+                        >
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter email address"
+                            required
+                        >
+                    </div>
+
+                    <div class="input-group">
+                        <label for="role">Account Role</label>
+
+                        <select id="role" required>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="accountStatus">
+                            Account Status
+                        </label>
+
+                        <select id="accountStatus" required>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Password</label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter password"
+                            minlength="6"
+                        >
+                    </div>
+
+                    <div class="input-group">
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Confirm password"
+                            minlength="6"
+                        >
+                    </div>
+
+                </div>
+
+                <p id="formMessage" class="form-message"></p>
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        id="cancelButton"
+                        class="cancel-button"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                    >
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        Save User
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </div>
+
+    <script src="manage-users.js"></script>
+
+</body>
+</html>

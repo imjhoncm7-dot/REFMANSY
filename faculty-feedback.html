@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Feedback | Refmansy Faculty</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="faculty-feedback.css">
+</head>
+
+<body>
+
+    <div class="page-layout">
+
+        <!-- Faculty Sidebar -->
+        <aside class="sidebar">
+
+            <div class="faculty-profile">
+
+                <div class="profile-logo">
+                    <span>RF</span>
+                </div>
+
+                <div class="profile-information">
+                    <h1>REFMANSY Faculty</h1>
+                    <p>User Dashboard</p>
+                </div>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="faculty-dashboard.html">
+                    <i class="fa-solid fa-table-cells-large"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="my-research-files.html">
+                    <i class="fa-regular fa-folder"></i>
+                    <span>My Research Files</span>
+                </a>
+
+                <a href="upload-research.html">
+                    <i class="fa-solid fa-upload"></i>
+                    <span>Upload Research</span>
+                </a>
+
+                <a href="search-files.html">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search Files</span>
+                </a>
+
+                <a href="submission-status.html">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Submission Status</span>
+                </a>
+
+                <a href="faculty-categories.html">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>Categories / Tags</span>
+                </a>
+
+                <a href="download-records.html">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Download Records</span>
+                </a>
+
+                <a href="faculty-feedback.html" class="active">
+                    <i class="fa-regular fa-comment-dots"></i>
+                    <span>Feedback</span>
+                </a>
+
+            </nav>
+
+            <button type="button" id="logoutButton" class="logout-button">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="page-header">
+
+                <div>
+                    <h2>Feedback</h2>
+
+                    <p>
+                        Send feedback, suggestions, or concerns to the
+                        Refmansy administrator.
+                    </p>
+                </div>
+
+                <div class="header-user">
+
+                    <div>
+                        <strong id="headerFacultyName">
+                            Faculty User
+                        </strong>
+                        <span>Faculty</span>
+                    </div>
+
+                    <div class="small-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- Summary -->
+            <section class="summary-grid">
+
+                <article class="summary-card">
+
+                    <div class="summary-icon total-icon">
+                        <i class="fa-regular fa-comments"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="totalFeedback">0</h3>
+                        <p>My Feedback</p>
+                    </div>
+
+                </article>
+
+                <article class="summary-card">
+
+                    <div class="summary-icon open-icon">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="openFeedback">0</h3>
+                        <p>Open Feedback</p>
+                    </div>
+
+                </article>
+
+                <article class="summary-card">
+
+                    <div class="summary-icon resolved-icon">
+                        <i class="fa-regular fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="resolvedFeedback">0</h3>
+                        <p>Resolved</p>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <section class="feedback-grid">
+
+                <!-- Submit Feedback -->
+                <article class="feedback-form-card">
+
+                    <div class="card-heading">
+                        <h3>Submit Feedback</h3>
+
+                        <p>
+                            Complete the form to send a message to the
+                            administrator.
+                        </p>
+                    </div>
+
+                    <form id="feedbackForm">
+
+                        <div class="input-group">
+                            <label for="feedbackType">
+                                Feedback Type *
+                            </label>
+
+                            <select id="feedbackType" required>
+                                <option value="">
+                                    Select feedback type
+                                </option>
+
+                                <option value="suggestion">
+                                    Suggestion
+                                </option>
+
+                                <option value="concern">
+                                    Concern
+                                </option>
+
+                                <option value="technical">
+                                    Technical Issue
+                                </option>
+
+                                <option value="general">
+                                    General Feedback
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="feedbackSubject">
+                                Subject *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="feedbackSubject"
+                                placeholder="Enter feedback subject"
+                                maxlength="100"
+                                required
+                            >
+                        </div>
+
+                        <div class="input-group">
+                            <label for="feedbackMessage">
+                                Message *
+                            </label>
+
+                            <textarea
+                                id="feedbackMessage"
+                                placeholder="Enter your feedback message"
+                                maxlength="1000"
+                                required
+                            ></textarea>
+
+                            <small>
+                                Maximum of 1,000 characters
+                            </small>
+                        </div>
+
+                        <p id="formMessage" class="form-message"></p>
+
+                        <button
+                            type="submit"
+                            id="submitFeedbackButton"
+                            class="submit-button"
+                        >
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Submit Feedback
+                        </button>
+
+                    </form>
+
+                </article>
+
+                <!-- Feedback Information -->
+                <article class="information-card">
+
+                    <div class="information-icon">
+                        <i class="fa-regular fa-message"></i>
+                    </div>
+
+                    <h3>How Feedback Works</h3>
+
+                    <div class="information-list">
+
+                        <div>
+                            <span>1</span>
+
+                            <p>
+                                Submit your suggestion, concern, or
+                                technical issue.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>2</span>
+
+                            <p>
+                                The administrator will review your
+                                feedback.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>3</span>
+
+                            <p>
+                                Check the feedback history for the
+                                administrator’s response.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- Feedback History -->
+            <section class="history-card">
+
+                <div class="card-heading">
+                    <h3>My Feedback History</h3>
+
+                    <p>
+                        View the status and administrator responses.
+                    </p>
+                </div>
+
+                <div class="table-controls">
+
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Search feedback..."
+                        >
+                    </div>
+
+                    <select id="statusFilter">
+                        <option value="all">All Statuses</option>
+                        <option value="new">New</option>
+                        <option value="in-progress">
+                            In Progress
+                        </option>
+                        <option value="resolved">
+                            Resolved
+                        </option>
+                    </select>
+
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Feedback ID</th>
+                                <th>Type</th>
+                                <th>Subject</th>
+                                <th>Date Submitted</th>
+                                <th>Status</th>
+                                <th>Admin Response</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="feedbackHistoryTable">
+
+                            <tr>
+                                <td colspan="7" class="empty-message">
+                                    You have not submitted any feedback.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="table-footer">
+                    <p id="resultCount">
+                        Showing 0 feedback messages
+                    </p>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Feedback Details Modal -->
+    <div class="modal-overlay" id="detailsModal">
+
+        <section class="details-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h3>Feedback Details</h3>
+                    <p>View your message and the Admin response.</p>
+                </div>
+
+                <button type="button" id="closeModalButton">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <div class="feedback-information">
+
+                <div class="information-group">
+                    <label>Feedback ID</label>
+                    <p id="modalFeedbackId">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Date Submitted</label>
+                    <p id="modalDate">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Feedback Type</label>
+                    <p id="modalType">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Status</label>
+                    <p id="modalStatus">N/A</p>
+                </div>
+
+                <div class="information-group full-width">
+                    <label>Subject</label>
+                    <p id="modalSubject">N/A</p>
+                </div>
+
+                <div class="information-group full-width">
+                    <label>Your Message</label>
+                    <p id="modalMessage">N/A</p>
+                </div>
+
+                <div class="information-group full-width response-group">
+                    <label>Administrator Response</label>
+
+                    <p id="modalAdminResponse">
+                        The administrator has not responded yet.
+                    </p>
+                </div>
+
+                <div class="information-group">
+                    <label>Responded By</label>
+                    <p id="modalRespondedBy">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Response Date</label>
+                    <p id="modalResponseDate">N/A</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="faculty-feedback.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Submission Status | Refmansy Faculty</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="submission-status.css">
+</head>
+
+<body>
+
+    <div class="page-layout">
+
+        <!-- Faculty Sidebar -->
+        <aside class="sidebar">
+
+            <div class="faculty-profile">
+
+                <div class="profile-logo">
+                    <span>RF</span>
+                </div>
+
+                <div class="profile-information">
+                    <h1>REFMANSY Faculty</h1>
+                    <p>User Dashboard</p>
+                </div>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="faculty-dashboard.html">
+                    <i class="fa-solid fa-table-cells-large"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="my-research-files.html">
+                    <i class="fa-regular fa-folder"></i>
+                    <span>My Research Files</span>
+                </a>
+
+                <a href="upload-research.html">
+                    <i class="fa-solid fa-upload"></i>
+                    <span>Upload Research</span>
+                </a>
+
+                <a href="search-files.html">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search Files</span>
+                </a>
+
+                <a href="submission-status.html" class="active">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Submission Status</span>
+                </a>
+
+                <a href="faculty-categories.html">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>Categories / Tags</span>
+                </a>
+
+                <a href="download-records.html">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Download Records</span>
+                </a>
+
+                <a href="faculty-feedback.html">
+                    <i class="fa-regular fa-comment-dots"></i>
+                    <span>Feedback</span>
+                </a>
+
+            </nav>
+
+            <button type="button" id="logoutButton" class="logout-button">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="page-header">
+
+                <div>
+                    <h2>Submission Status</h2>
+
+                    <p>
+                        Track the review status of your research submissions.
+                    </p>
+                </div>
+
+                <div class="header-user">
+
+                    <div>
+                        <strong id="headerFacultyName">
+                            Faculty User
+                        </strong>
+                        <span>Faculty</span>
+                    </div>
+
+                    <div class="small-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- Status Summary -->
+            <section class="summary-grid">
+
+                <article class="summary-card">
+
+                    <div class="summary-icon total-icon">
+                        <i class="fa-regular fa-folder-open"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="totalSubmissions">0</h3>
+                        <p>Total Submissions</p>
+                    </div>
+
+                </article>
+
+                <article class="summary-card">
+
+                    <div class="summary-icon pending-icon">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="pendingSubmissions">0</h3>
+                        <p>Pending Review</p>
+                    </div>
+
+                </article>
+
+                <article class="summary-card">
+
+                    <div class="summary-icon approved-icon">
+                        <i class="fa-regular fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="approvedSubmissions">0</h3>
+                        <p>Approved</p>
+                    </div>
+
+                </article>
+
+                <article class="summary-card">
+
+                    <div class="summary-icon rejected-icon">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="rejectedSubmissions">0</h3>
+                        <p>Rejected</p>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- Status Filter -->
+            <section class="status-card">
+
+                <div class="card-heading">
+
+                    <div>
+                        <h3>My Submissions</h3>
+                        <p>
+                            View the current review status and Admin feedback.
+                        </p>
+                    </div>
+
+                    <div class="table-controls">
+
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <input
+                                type="search"
+                                id="searchInput"
+                                placeholder="Search research title..."
+                            >
+                        </div>
+
+                        <select id="statusFilter">
+                            <option value="all">All Statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <!-- Submission Cards -->
+                <div id="submissionList" class="submission-list">
+
+                    <div class="empty-submissions">
+
+                        <i class="fa-regular fa-folder-open"></i>
+
+                        <h3>No submissions available</h3>
+
+                        <p>
+                            Upload a research file to track its status.
+                        </p>
+
+                        <a href="upload-research.html">
+                            Upload Research
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Submission Details Modal -->
+    <div class="modal-overlay" id="submissionModal">
+
+        <section class="submission-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h3>Submission Details</h3>
+                    <p>Review your submission and its current status.</p>
+                </div>
+
+                <button type="button" id="closeModalButton">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <div class="submission-information">
+
+                <div class="information-group full-width">
+                    <label>Research Title</label>
+                    <p id="modalTitle">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Research ID</label>
+                    <p id="modalFileId">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Category</label>
+                    <p id="modalCategory">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Date Uploaded</label>
+                    <p id="modalUploadDate">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Current Status</label>
+                    <p id="modalStatus">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Reviewed By</label>
+                    <p id="modalReviewedBy">Not reviewed</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Date Reviewed</label>
+                    <p id="modalReviewedDate">Not reviewed</p>
+                </div>
+
+                <div class="information-group full-width">
+                    <label>Admin Comment</label>
+                    <p id="modalComment">
+                        No Admin comment available.
+                    </p>
+                </div>
+
+                <!-- Status Timeline -->
+                <div class="information-group full-width">
+
+                    <label>Submission Progress</label>
+
+                    <div class="status-timeline">
+
+                        <div class="timeline-step completed">
+                            <span>
+                                <i class="fa-solid fa-upload"></i>
+                            </span>
+
+                            <div>
+                                <h4>Submitted</h4>
+                                <p id="submittedDate">N/A</p>
+                            </div>
+                        </div>
+
+                        <div
+                            id="reviewStep"
+                            class="timeline-step"
+                        >
+                            <span>
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </span>
+
+                            <div>
+                                <h4>Admin Review</h4>
+                                <p>Waiting for review</p>
+                            </div>
+                        </div>
+
+                        <div
+                            id="decisionStep"
+                            class="timeline-step"
+                        >
+                            <span>
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+
+                            <div>
+                                <h4>Decision</h4>
+                                <p id="decisionText">Pending</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="editSubmissionButton"
+                    class="edit-button"
+                >
+                    <i class="fa-solid fa-pen"></i>
+                    Edit Pending Submission
+                </button>
+
+                <button
+                    type="button"
+                    id="viewDocumentButton"
+                    class="view-button"
+                >
+                    <i class="fa-regular fa-file-pdf"></i>
+                    View Document
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="submission-status.js"></script>
+
+</body>
+</html>

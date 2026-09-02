@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Approved Files | Refmansy Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="approved-files.css">
+</head>
+
+<body>
+
+    <div class="page-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="admin-profile">
+
+                <div class="profile-logo">
+                    <span>RR</span>
+                </div>
+
+                <div class="profile-information">
+                    <h1>REFMANSY Admin</h1>
+                    <p>Management Panel</p>
+                </div>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="admin-dashboard.html">
+                    <i class="fa-solid fa-table-cells-large"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="research-files.html">
+                    <i class="fa-regular fa-folder"></i>
+                    <span>Research Files</span>
+                </a>
+
+                <a href="pending-files.html">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>Pending Files</span>
+                </a>
+
+                <a href="approved-files.html" class="active">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <span>Approved Files</span>
+                </a>
+
+                <a href="rejected-files.html">
+                    <i class="fa-solid fa-xmark"></i>
+                    <span>Rejected Files</span>
+                </a>
+
+                <a href="categories.html">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>Categories / Tags</span>
+                </a>
+
+                <a href="manage-users.html">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Users</span>
+                </a>
+
+                <a href="feedback.html">
+                    <i class="fa-regular fa-comment-dots"></i>
+                    <span>Feedback</span>
+                </a>
+
+                <a href="admin-reports.html">
+                    <i class="fa-regular fa-file-lines"></i>
+                    <span>Reports</span>
+                </a>
+
+            </nav>
+
+            <button type="button" id="logoutButton" class="logout-button">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="page-header">
+
+                <div>
+                    <h2>Approved Files</h2>
+                    <p>View all approved research files.</p>
+                </div>
+
+                <div class="header-user">
+
+                    <div>
+                        <strong id="headerAdminName">Administrator</strong>
+                        <span>Admin</span>
+                    </div>
+
+                    <div class="small-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- Approved Summary -->
+            <section class="approved-summary">
+
+                <div class="summary-icon">
+                    <i class="fa-regular fa-circle-check"></i>
+                </div>
+
+                <div>
+                    <h3 id="totalApprovedFiles">0</h3>
+                    <p>Approved research files</p>
+                </div>
+
+            </section>
+
+            <!-- Approved Files -->
+            <section class="files-card">
+
+                <div class="card-heading">
+
+                    <div>
+                        <h3>Approved Research Files</h3>
+                        <p>
+                            Search and review approved research submissions.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Search and Category Filter -->
+                <div class="table-controls">
+
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Search title or researcher..."
+                        >
+                    </div>
+
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                    </select>
+
+                </div>
+
+                <!-- Table -->
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Research ID</th>
+                                <th>Research Title</th>
+                                <th>Researcher</th>
+                                <th>Category</th>
+                                <th>Date Approved</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="approvedFilesTable">
+
+                            <tr>
+                                <td colspan="7" class="empty-message">
+                                    No approved research files found.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="table-footer">
+                    <p id="resultCount">Showing 0 approved files</p>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- File Details Modal -->
+    <div class="modal-overlay" id="detailsModal">
+
+        <section class="details-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h3>Approved File Details</h3>
+                    <p>Information about the approved research file.</p>
+                </div>
+
+                <button type="button" id="closeModalButton">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <div class="file-information">
+
+                <div class="information-group">
+                    <label>Research ID</label>
+                    <p id="modalFileId">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Date Approved</label>
+                    <p id="modalApprovedDate">N/A</p>
+                </div>
+
+                <div class="information-group full-width">
+                    <label>Research Title</label>
+                    <p id="modalTitle">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Researcher</label>
+                    <p id="modalResearcher">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Category</label>
+                    <p id="modalCategory">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Reviewed By</label>
+                    <p id="modalReviewedBy">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Status</label>
+                    <p class="approved-text">Approved</p>
+                </div>
+
+                <div class="information-group full-width">
+                    <label>Description</label>
+                    <p id="modalDescription">
+                        No description available.
+                    </p>
+                </div>
+
+                <div class="information-group full-width">
+                    <label>Review Comment</label>
+                    <p id="modalComment">
+                        No review comment available.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="markPendingButton"
+                    class="pending-button"
+                >
+                    <i class="fa-regular fa-clock"></i>
+                    Mark as Pending
+                </button>
+
+                <button
+                    type="button"
+                    id="rejectButton"
+                    class="reject-button"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                    Reject
+                </button>
+
+                <button
+                    type="button"
+                    id="viewFileButton"
+                    class="view-file-button"
+                >
+                    <i class="fa-regular fa-file"></i>
+                    View File
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="approved-files.js"></script>
+
+</body>
+</html>

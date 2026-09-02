@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Search Files | Refmansy Faculty</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="search-files.css">
+</head>
+
+<body>
+
+    <div class="page-layout">
+
+        <!-- Faculty Sidebar -->
+        <aside class="sidebar">
+
+            <div class="faculty-profile">
+
+                <div class="profile-logo">
+                    <span>RF</span>
+                </div>
+
+                <div class="profile-information">
+                    <h1>REFMANSY Faculty</h1>
+                    <p>User Dashboard</p>
+                </div>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="faculty-dashboard.html">
+                    <i class="fa-solid fa-table-cells-large"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="my-research-files.html">
+                    <i class="fa-regular fa-folder"></i>
+                    <span>My Research Files</span>
+                </a>
+
+                <a href="upload-research.html">
+                    <i class="fa-solid fa-upload"></i>
+                    <span>Upload Research</span>
+                </a>
+
+                <a href="search-files.html" class="active">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search Files</span>
+                </a>
+
+                <a href="submission-status.html">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Submission Status</span>
+                </a>
+
+                <a href="faculty-categories.html">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>Categories / Tags</span>
+                </a>
+
+                <a href="download-records.html">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Download Records</span>
+                </a>
+
+                <a href="faculty-feedback.html">
+                    <i class="fa-regular fa-comment-dots"></i>
+                    <span>Feedback</span>
+                </a>
+
+            </nav>
+
+            <button type="button" id="logoutButton" class="logout-button">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="page-header">
+
+                <div>
+                    <h2>Search Research Files</h2>
+                    <p>
+                        Search and view approved research documents.
+                    </p>
+                </div>
+
+                <div class="header-user">
+
+                    <div>
+                        <strong id="headerFacultyName">
+                            Faculty User
+                        </strong>
+                        <span>Faculty</span>
+                    </div>
+
+                    <div class="small-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- Main Search -->
+            <section class="search-card">
+
+                <div class="main-search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Search by title, researcher, keyword, or department..."
+                    >
+
+                    <button type="button" id="searchButton">
+                        Search
+                    </button>
+
+                </div>
+
+                <div class="search-filters">
+
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                    </select>
+
+                    <select id="researchTypeFilter">
+                        <option value="all">
+                            All Research Types
+                        </option>
+
+                        <option value="institutional">
+                            Institutional Research
+                        </option>
+
+                        <option value="action-research">
+                            Action Research
+                        </option>
+
+                        <option value="thesis">Thesis</option>
+                        <option value="capstone">
+                            Capstone Project
+                        </option>
+
+                        <option value="other">Other</option>
+                    </select>
+
+                    <select id="yearFilter">
+                        <option value="all">All Years</option>
+                    </select>
+
+                    <button
+                        type="button"
+                        id="clearFiltersButton"
+                        class="clear-button"
+                    >
+                        Clear Filters
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- Results -->
+            <section class="results-card">
+
+                <div class="card-heading">
+
+                    <div>
+                        <h3>Approved Research Files</h3>
+
+                        <p id="resultCount">
+                            Showing 0 research files
+                        </p>
+                    </div>
+
+                    <select id="sortFilter">
+                        <option value="newest">
+                            Newest First
+                        </option>
+
+                        <option value="oldest">
+                            Oldest First
+                        </option>
+
+                        <option value="title">
+                            Title A–Z
+                        </option>
+                    </select>
+
+                </div>
+
+                <div id="researchResults" class="research-results">
+
+                    <div class="empty-results">
+
+                        <i class="fa-regular fa-folder-open"></i>
+
+                        <h3>No approved research files found</h3>
+
+                        <p>
+                            Approved files will appear here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Research Details Modal -->
+    <div class="modal-overlay" id="detailsModal">
+
+        <section class="details-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h3>Research Details</h3>
+                    <p>View information about this research file.</p>
+                </div>
+
+                <button type="button" id="closeModalButton">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <div class="research-information">
+
+                <div class="information-group full-width">
+                    <label>Research Title</label>
+                    <p id="modalTitle">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Researcher</label>
+                    <p id="modalResearcher">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Co-Researchers</label>
+                    <p id="modalCoResearchers">None</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Category</label>
+                    <p id="modalCategory">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Research Type</label>
+                    <p id="modalResearchType">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Department</label>
+                    <p id="modalDepartment">N/A</p>
+                </div>
+
+                <div class="information-group">
+                    <label>Publication Year</label>
+                    <p id="modalYear">N/A</p>
+                </div>
+
+                <div class="information-group full-width">
+                    <label>Keywords</label>
+                    <div id="modalKeywords" class="keywords-list">
+                        <span>No keywords</span>
+                    </div>
+                </div>
+
+                <div class="information-group full-width">
+                    <label>Abstract / Description</label>
+                    <p id="modalDescription">
+                        No description available.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="viewDocumentButton"
+                    class="view-document-button"
+                >
+                    <i class="fa-regular fa-file-pdf"></i>
+                    View Document
+                </button>
+
+                <button
+                    type="button"
+                    id="downloadButton"
+                    class="download-button"
+                >
+                    <i class="fa-solid fa-download"></i>
+                    Download
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="search-files.js"></script>
+
+</body>
+</html>

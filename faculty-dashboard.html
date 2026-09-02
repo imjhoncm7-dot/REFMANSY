@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Faculty Dashboard | Refmansy</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="faculty-dashboard.css">
+</head>
+
+<body>
+
+    <div class="page-layout">
+
+        <!-- Faculty Sidebar -->
+        <aside class="sidebar">
+
+            <div class="faculty-profile">
+
+                <div class="profile-logo">
+                    <span>RF</span>
+                </div>
+
+                <div class="profile-information">
+                    <h1>REFMANSY Faculty</h1>
+                    <p>User Dashboard</p>
+                </div>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="faculty-dashboard.html" class="active">
+                    <i class="fa-solid fa-table-cells-large"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="my-research-files.html">
+                    <i class="fa-regular fa-folder"></i>
+                    <span>My Research Files</span>
+                </a>
+
+                <a href="upload-research.html">
+                    <i class="fa-solid fa-upload"></i>
+                    <span>Upload Research</span>
+                </a>
+
+                <a href="search-files.html">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search Files</span>
+                </a>
+
+                <a href="submission-status.html">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Submission Status</span>
+                </a>
+
+                <a href="faculty-categories.html">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>Categories / Tags</span>
+                </a>
+
+                <a href="download-records.html">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Download Records</span>
+                </a>
+
+                <a href="faculty-feedback.html">
+                    <i class="fa-regular fa-comment-dots"></i>
+                    <span>Feedback</span>
+                </a>
+
+            </nav>
+
+            <button type="button" id="logoutButton" class="logout-button">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+
+        </aside>
+
+        <!-- Dashboard Content -->
+        <main class="dashboard-content">
+
+            <!-- Header -->
+            <header class="dashboard-header">
+
+                <div>
+                    <h2>Faculty Dashboard</h2>
+
+                    <p>
+                        Manage uploaded research files, track status,
+                        and search documents.
+                    </p>
+                </div>
+
+                <div class="header-user">
+
+                    <div>
+                        <strong id="headerFacultyName">Faculty User</strong>
+                        <span>Faculty</span>
+                    </div>
+
+                    <div class="small-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- File Status Cards -->
+            <section class="status-cards">
+
+                <article class="status-card">
+
+                    <div class="status-icon files-icon">
+                        <i class="fa-regular fa-file"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="totalMyFiles">0</h3>
+                        <p>My Files</p>
+                    </div>
+
+                </article>
+
+                <article class="status-card">
+
+                    <div class="status-icon pending-icon">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="totalPending">0</h3>
+                        <p>Pending</p>
+                    </div>
+
+                </article>
+
+                <article class="status-card">
+
+                    <div class="status-icon approved-icon">
+                        <i class="fa-regular fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="totalApproved">0</h3>
+                        <p>Approved</p>
+                    </div>
+
+                </article>
+
+                <article class="status-card">
+
+                    <div class="status-icon rejected-icon">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="totalRejected">0</h3>
+                        <p>Rejected</p>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- Dashboard Grid -->
+            <section class="dashboard-grid">
+
+                <!-- Quick Access -->
+                <article class="dashboard-card quick-access-card">
+
+                    <div class="card-heading">
+                        <h3>Quick Access</h3>
+                        <p>Open frequently used faculty features.</p>
+                    </div>
+
+                    <div class="quick-access-list">
+
+                        <a
+                            href="upload-research.html"
+                            class="quick-link primary-link"
+                        >
+                            <i class="fa-solid fa-upload"></i>
+
+                            <div>
+                                <h4>Upload Research File</h4>
+                                <p>Submit a new research document</p>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+
+                        <a href="search-files.html" class="quick-link">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <div>
+                                <h4>Search Research Files</h4>
+                                <p>Find approved research documents</p>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+
+                        <a
+                            href="submission-status.html"
+                            class="quick-link"
+                        >
+                            <i class="fa-regular fa-folder-open"></i>
+
+                            <div>
+                                <h4>View My Submissions</h4>
+                                <p>Track your research-file status</p>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+                <!-- Submission Updates -->
+                <article class="dashboard-card updates-card">
+
+                    <div class="card-heading">
+                        <h3>Submission Status Updates</h3>
+                        <p>Recent changes to your research submissions.</p>
+                    </div>
+
+                    <div id="statusUpdates" class="status-updates">
+
+                        <p class="empty-message">
+                            No submission updates available.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- Uploaded Research Files -->
+            <section class="dashboard-card uploaded-files-card">
+
+                <div class="card-heading files-heading">
+
+                    <div>
+                        <h3>My Uploaded Research Files</h3>
+                        <p>Your recently submitted research files.</p>
+                    </div>
+
+                    <a href="my-research-files.html">
+                        View All
+                    </a>
+
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Research Title</th>
+                                <th>Category</th>
+                                <th>Date Uploaded</th>
+                                <th>Status</th>
+                                <th>Admin Comment</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="facultyFilesTable">
+
+                            <tr>
+                                <td colspan="6" class="empty-table">
+                                    You have not uploaded any research files.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="faculty-dashboard.js"></script>
+
+</body>
+</html>

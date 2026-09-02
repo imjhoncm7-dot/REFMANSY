@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | Refmansy</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="admin-dashboard.css">
+</head>
+
+<body>
+
+    <div class="page-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="admin-profile">
+
+                <div class="profile-logo">
+                    <span>RR</span>
+                </div>
+
+                <div class="profile-information">
+                    <h1>REFMANSY Admin</h1>
+                    <p>Management Panel</p>
+                </div>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="admin-dashboard.html" class="active">
+                    <i class="fa-solid fa-table-cells-large"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="research-files.html">
+                    <i class="fa-regular fa-folder"></i>
+                    <span>Research Files</span>
+                </a>
+
+                <a href="pending-files.html">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>Pending Files</span>
+                </a>
+
+                <a href="approved-files.html">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <span>Approved Files</span>
+                </a>
+
+                <a href="rejected-files.html">
+                    <i class="fa-solid fa-xmark"></i>
+                    <span>Rejected Files</span>
+                </a>
+
+                <a href="categories.html">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>Categories / Tags</span>
+                </a>
+
+                <a href="manage-users.html">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Users</span>
+                </a>
+
+                <a href="feedback.html">
+                    <i class="fa-regular fa-comment-dots"></i>
+                    <span>Feedback</span>
+                </a>
+
+                <a href="admin-reports.html">
+                    <i class="fa-regular fa-file-lines"></i>
+                    <span>Reports</span>
+                </a>
+
+            </nav>
+
+            <button type="button" id="logoutButton" class="logout-button">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-content">
+
+            <!-- Header -->
+            <header class="dashboard-header">
+
+                <div>
+                    <h2>Admin Dashboard</h2>
+                    <p>
+                        Overview of uploaded research files and system
+                        management features.
+                    </p>
+                </div>
+
+                <div class="header-actions">
+
+                    <button type="button" class="notification-button">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+
+                    <div class="header-user">
+                        <div>
+                            <strong id="headerAdminName">Administrator</strong>
+                            <span>Admin</span>
+                        </div>
+
+                        <div class="small-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- Status Cards -->
+            <section class="status-cards">
+
+                <article class="status-card uploaded-card">
+
+                    <div class="status-icon">
+                        <i class="fa-regular fa-file"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="totalUploaded">0</h3>
+                        <p>Uploaded Files</p>
+                    </div>
+
+                </article>
+
+                <article class="status-card pending-card">
+
+                    <div class="status-icon">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="totalPending">0</h3>
+                        <p>Pending</p>
+                    </div>
+
+                </article>
+
+                <article class="status-card approved-card">
+
+                    <div class="status-icon">
+                        <i class="fa-regular fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="totalApproved">0</h3>
+                        <p>Approved</p>
+                    </div>
+
+                </article>
+
+                <article class="status-card rejected-card">
+
+                    <div class="status-icon">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+
+                    <div>
+                        <h3 id="totalRejected">0</h3>
+                        <p>Rejected</p>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- Dashboard Overview -->
+            <section class="dashboard-grid">
+
+                <!-- Status Summary -->
+                <article class="dashboard-card status-summary">
+
+                    <div class="card-heading">
+                        <div>
+                            <h3>Status Summary</h3>
+                            <p>Research-file approval distribution</p>
+                        </div>
+                    </div>
+
+                    <div class="summary-content">
+
+                        <div class="donut-chart">
+                            <div class="donut-center">
+                                <strong id="chartTotal">0</strong>
+                                <span>Total</span>
+                            </div>
+                        </div>
+
+                        <div class="chart-legend">
+
+                            <div class="legend-item">
+                                <span class="legend-color approved-color"></span>
+
+                                <p>Approved</p>
+                                <strong id="legendApproved">0</strong>
+                            </div>
+
+                            <div class="legend-item">
+                                <span class="legend-color pending-color"></span>
+
+                                <p>Pending</p>
+                                <strong id="legendPending">0</strong>
+                            </div>
+
+                            <div class="legend-item">
+                                <span class="legend-color rejected-color"></span>
+
+                                <p>Rejected</p>
+                                <strong id="legendRejected">0</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- System Management -->
+                <article class="dashboard-card system-management">
+
+                    <div class="card-heading">
+                        <div>
+                            <h3>System Management</h3>
+                            <p>Quick access to administration tools</p>
+                        </div>
+                    </div>
+
+                    <div class="management-links">
+
+                        <a href="manage-users.html">
+                            <span class="management-number">1</span>
+
+                            <div>
+                                <h4>Manage User Accounts</h4>
+                                <p>Add, update, or remove users</p>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+
+                        <a href="research-files.html">
+                            <span class="management-number">2</span>
+
+                            <div>
+                                <h4>Review Research Files</h4>
+                                <p>Review submitted research documents</p>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+
+                        <a href="categories.html">
+                            <span class="management-number">3</span>
+
+                            <div>
+                                <h4>Manage Categories & Tags</h4>
+                                <p>Organize files using categories</p>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+
+                        <a href="feedback.html">
+                            <span class="management-number">4</span>
+
+                            <div>
+                                <h4>View Feedback & Reports</h4>
+                                <p>Check feedback and reported issues</p>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- Recent Research Files -->
+            <section class="dashboard-card recent-files">
+
+                <div class="card-heading recent-heading">
+
+                    <div>
+                        <h3>Recent Uploaded Research Files</h3>
+                        <p>Research files recently submitted to the system</p>
+                    </div>
+
+                    <a href="research-files.html" class="view-all-button">
+                        View All
+                    </a>
+
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Research Title</th>
+                                <th>Researcher</th>
+                                <th>Category</th>
+                                <th>Date Uploaded</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="recentFilesTable">
+
+                            <tr>
+                                <td colspan="6" class="empty-message">
+                                    No research files have been uploaded.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="admin-dashboard.js"></script>
+
+</body>
+</html>

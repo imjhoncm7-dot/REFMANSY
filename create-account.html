@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | Refmansy</title>
+
+    <link rel="stylesheet" href="create-account.css">
+</head>
+
+<body>
+
+    <main class="create-account-container">
+
+        <section class="create-account-box">
+
+            <h1>Refmansy</h1>
+            <h2>Create Account</h2>
+            <p class="subtitle">Enter your information to create an account.</p>
+
+            <form id="createAccountForm">
+
+                <div class="input-group">
+                    <label for="fullname">Full Name</label>
+                    <input
+                        type="text"
+                        id="fullname"
+                        placeholder="Enter your full name"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Create a username"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email address"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="role">Account Type</label>
+                    <select id="role" required>
+                        <option value="">Select account type</option>
+                        <option value="admin">Admin</option>
+                        <option value="faculty">Faculty</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Create a password"
+                        minlength="6"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm your password"
+                        minlength="6"
+                        required
+                    >
+                </div>
+
+                <p id="message" class="message"></p>
+
+                <button type="submit" class="create-button">
+                    Create Account
+                </button>
+
+                <p class="login-link">
+                    Already have an account?
+                    <a href="login.html">Log in</a>
+                </p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <script src="create-account.js"></script>
+
+</body>
+</html>
